@@ -18,11 +18,13 @@ body {
 }
 .main-container{
     width: 90vw;
-    height: 90vh;
+    height: 95vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    justify-content: space-between;
 }
+/*Banner Code*/
 .banner {
   background: rgba(118, 146, 255, .70);
   height: 17%;
@@ -82,21 +84,17 @@ body {
   will-change: box-shadow,transform;
   font-size: 18px;
 }
-
 .button-group button:focus {
   box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #9e9edf 0 -3px 0 inset;
 }
-
 .button-group button:hover {
   box-shadow: rgba(27, 44, 193, 0.4) 0 4px 8px, rgba(27, 44, 193, 0.3) 0 7px 13px -3px, #9e9edf 0 -3px 0 inset;
   transform: translateY(-2px);
 }
-
 .button-group button:active {
   box-shadow: #D6D6E7 0 3px 7px inset;
   transform: translateY(2px);
 }
-
 .button-group:after{
     content: "";
     clear: both;
@@ -104,4 +102,37 @@ body {
 }
 .button-group button:not(:last-child) {
     border-right: none;
+}
+
+/*Bottom Section Code*/
+.lower_section{
+  height: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  justify-content: space-between;
+  
+}
+.profile_picture{
+  background: rgba(118, 146, 255, .70);
+  width: 24%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 10px;
+  border: solid 1px rgb(58, 58, 146);
+}
+.profile_picture img{
+  width: 90%;
+  height: 95%;
+  border-radius: 10px;
+}
+.about_section{
+  background: rgba(118, 146, 255, .70);
+  width: 75%;
+  justify-content: center;
+  position: relative;
+  border-radius: 10px;
+  border: solid 1px rgb(58, 58, 146);
 }
