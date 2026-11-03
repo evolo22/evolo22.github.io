@@ -1,31 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="CSS/style.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Lizard Deck</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/style.css">
+</head>
+<body>
+  <!-- js/stage.js sizes and scales the stage so it fills the window. -->
+  <div id="stage">
+    <div id="screen">
+      <div id="desk">
+        <header class="header-win">
+          <div class="titlebar">
+            <button class="tb-btn" id="btn-min" aria-label="Minimize"><span class="min-glyph"></span></button>
+            <button class="tb-btn" id="btn-close" aria-label="Close">&#x2715;</button>
+          </div>
+          <a class="logo" href="index.html">
+            Lizard Deck
+          </a>
+          <nav class="nav">
+            <a class="btn" data-link="linkedin" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" data-link="github" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn" href="projects.html">Projects</a>
+          </nav>
+        </header>
 
-    <body>
-        <div class="main-container">
-            <div class="banner">
-                <h1>Lizard Deck</h1>
-                <div class="button-group">
-                    <button>LinkedIn</button>
-                    <button>GitHub</button>
-                    <button>Projects</button>
-                </div>
-            </div>
-            <div class="lower_section">
-               <div class="profile_picture">
-                    <img src="utils/profile_picture.png" alt="Profile picture">
-               </div> 
+        <div class="row">
+        <section class="panel panel-left">
+          <div class="portrait">
+            <img src="utils/profile_picture.png" alt="Profile picture"
+                 onerror="this.parentNode.classList.add('missing'); this.remove()">
+          </div>
+        </section>
 
-               <div class="about_section">
-                About Section here
-               </div>
+        <main class="panel panel-right">
+          <article class="about">
+            <h2 class="about-title"><span class="tilde">~</span>[About Me]</h2>
+            <dl>
+              <dt>General:</dt>
+              <dd>Pursuing my Master&rsquo;s in CS with a focus in GPUs, Compilers, and Operating Systems</dd>
+              <dt>Hobbies:</dt>
+              <dd>Music, running, rock-climbing, disassembling old tech, fashion.</dd>
+              <dt>Latest Project:</dt>
+              <dd>Putting HomeBrew on PSP3000, CyberDeck</dd>
+            </dl>
+          </article>
 
-            </div>
+          <div class="critter" id="fella" role="img" aria-label="A little 3D fella swimming in water"></div>
+
+          <div class="terminal" id="terminal" data-mode="loop" aria-hidden="true"></div>
+        </main>
         </div>
-    </body>
+      </div>
 
+      <footer class="status away" id="status" title="">
+        <span class="status-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1z"/>
+          </svg>
+          <span class="status-dot"></span>
+        </span>
+        <span class="status-text" id="status-text">Checking...</span>
+      </footer>
+
+      <button class="taskbar-chip" id="chip" hidden>&#x25A3; lizard_deck.exe</button>
+    </div>
+  </div>
+
+  <div id="poweroff" hidden>
+    <p>IT IS NOW SAFE TO TURN OFF YOUR COMPUTER</p>
+    <button id="reboot">[ press any key to reboot ]</button>
+  </div>
+
+  <div id="rotate-hint">&#x21BB; turn your phone sideways for the full deck</div>
+
+  <script src="js/config.js"></script>
+  <script src="js/stage.js"></script>
+  <script src="js/portrait.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="js/fella.js"></script>
+  <script src="js/terminal.js"></script>
+</body>
 </html>

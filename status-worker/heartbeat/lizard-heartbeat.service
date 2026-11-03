@@ -1,0 +1,8 @@
+[Unit]
+Description=Lizard Deck: tell the website I'm at my puter
+After=network-online.target
+
+[Service]
+Type=oneshot
+EnvironmentFile=%h/.config/lizard-deck/env
+ExecStart=/usr/bin/curl -fsS -m 10 -X POST -H "Authorization: Bearer ${PING_TOKEN}" ${STATUS_BASE}/ping

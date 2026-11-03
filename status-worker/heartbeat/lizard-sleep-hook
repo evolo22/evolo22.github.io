@@ -1,0 +1,16 @@
+#!/bin/sh
+# Optional: flips the site to "Away!" the moment the laptop suspends (lid close)
+# instead of waiting ~5 minutes for the heartbeat to go stale.
+# Install (needs root):
+#   sudo cp lizard-sleep-hook /usr/lib/systemd/system-sleep/lizard-deck
+#   sudo chmod +x /usr/lib/systemd/system-sleep/lizard-deck
+# and set ENV_FILE below to your env file's full path.
+ENV_FILE=/home/YOUR_USER/.config/lizard-deck/env
+[ -f "$ENV_FILE" ] || exit 0
+. "$ENV_FILE"
+
+case "$1" in
+  pre)  curl -fsS -m 5 -X POST -H "Authorization: Bearer $PING_TOKEN" "$STATUS_BASE/away" >/dev/null 2>&1 ;;
+  post) (sleep 15; curl -fsS -m 10 -X POST -H "Authorization: Bearer $PING_TOKEN" "$STATUS_BASE/ping" >/dev/null 2>&1) & ;;
+esac
+exit 0

@@ -1,0 +1,13 @@
+[Unit]
+Description=Lizard Deck: mark me away on logout/shutdown
+After=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+EnvironmentFile=%h/.config/lizard-deck/env
+ExecStart=/bin/true
+ExecStop=-/usr/bin/curl -fsS -m 5 -X POST -H "Authorization: Bearer ${PING_TOKEN}" ${STATUS_BASE}/away
+
+[Install]
+WantedBy=default.target
