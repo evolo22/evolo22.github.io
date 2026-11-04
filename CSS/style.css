@@ -315,16 +315,51 @@ body {
 
 #poweroff {
   position: fixed; inset: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px;
-  background: #000; color: #ffb000;
-  font: clamp(14px, 2.2vw, 28px) var(--term-font);
-  text-align: center; padding: 0 16px;
   z-index: 10;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  justify-content: flex-end; align-items: flex-start;
+  gap: 10px;
+  padding: 0 6vw calc(9vh + env(safe-area-inset-bottom, 0px));
+  text-align: left;
+  background: #2d4a22;
+  animation: fadeIn 1.2s ease both;
+}
+/* blurred copy of the photo fills any space the photo doesn't cover */
+#poweroff::before {
+  content: "";
+  position: absolute; inset: -60px;
+  z-index: -2;
+  background: #2d4a22 url("../utils/welcome_back.png") center / cover no-repeat;
+  filter: blur(36px) brightness(.8) saturate(1.1);
+}
+/* the photo itself at full height, with a dark fade at the top for the text */
+#poweroff::after {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgba(0, 0, 0, .65), rgba(0, 0, 0, .25) 30%, transparent 50%),
+    url("../utils/welcome_back.png") center / cover no-repeat;
 }
 #poweroff[hidden] { display: none; }
+@keyframes fadeIn { from { opacity: 0; } }
+
+.welcome {
+  margin: 0;
+  color: #fffaf0;
+  font: 400 clamp(34px, 5vw, 92px) "Great Vibes", "Brush Script MT", cursive;
+  line-height: 1.1;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, .75), 0 1px 3px rgba(0, 0, 0, .6);
+}
 #poweroff button {
-  background: none; border: 0; color: #a87400; font: inherit; font-size: .7em; cursor: pointer;
-  animation: blink 1.2s steps(1) infinite;
+  background: none; border: 0; cursor: pointer;
+  padding: 0 0 0 .3em;
+  color: rgba(255, 250, 240, .85);
+  font: 800 clamp(13px, 1.3vw, 22px) var(--ui-font);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, .9);
+  animation: blink 1.4s steps(1) infinite;
 }
 
 /* ---------- phones held upright ---------- */
